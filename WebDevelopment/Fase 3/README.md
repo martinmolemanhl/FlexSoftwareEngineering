@@ -1,4 +1,5 @@
 #Front End Website met basic JQuery - Fase 3
+
 Om te voorkomen dat we functies gebruiken die in een browser niet ondersteund
 wordt, kun je gebruik maken van een bibliotheek ('Library') zoals JQuery.
 
