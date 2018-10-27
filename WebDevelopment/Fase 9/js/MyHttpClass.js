@@ -1,6 +1,10 @@
 export class MyHttp {
     getDataFromIMDB(url){
         console.log(">>getDataFromIMDB");
+
+        // create a promise that will be returned as the function's result
+        // the calling function can supply the resolve and reject function.
+
         var prom = new Promise(function(resolve, reject) {
             console.log("getDataFromIMDB::Promise body");
 
@@ -12,11 +16,15 @@ export class MyHttp {
 
             // set a function that is called when the API call is completed without errors
             xhr.onload = function () {
+                console.log("Data retrieved; now calling resolve function");
                 resolve(xhr.response);
             };
 
             // set a function that is called when the API call cannot be completed.
             xhr.onerror = function () {
+                console.log("#ERROR reaching URL " + url);
+                console.log("#ERROR response" + xhr.response);
+                console.log("#ERROR now calling REJECT function");
                 reject(xhr.response);
             };
 
@@ -27,22 +35,5 @@ export class MyHttp {
         console.log("<<getDataFromIMDB");
         return prom;
     }//getDataFromIMDB
-
-    ShowDataFromIMDB(url){
-        console.log(">>ShowDataFromIMDB");
-        var prom = this.getDataFromIMDB(url);
-
-        prom.then(
-            strJsonData => {
-                console.log("ShowDataFromIMDB::Ready 1: raw JSON data -> JS Object ");
-                //console.log(strJsonData);
-                var objJson = JSON.parse(strJsonData);
-                return objJson;
-            },
-            reason => console.log("#ERROR : " + reason)
-        );
-        console.log("<<ShowDataFromIMDB");
-        return prom;
-    }//ShowDataFromIMDB
 
 }//class MyHttpClass
