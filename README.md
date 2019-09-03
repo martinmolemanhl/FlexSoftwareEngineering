@@ -1,2 +1,3 @@
 # FlexSoftwareEngineering
-NHL Stenden Flexibel Onderwijs - Software Engineering
+Deze repository is verhuisd naar de NHL Stenden organisatie
+[https://github.com/NHLStenden](URL)
